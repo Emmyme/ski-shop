@@ -1,63 +1,66 @@
 <template>
+    <!-- länkar till font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <main>
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="2">Home</a></li>
-                <li><a href="1">Varukorg</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Varukorg</a></li>
                 <li>Betalning</li>
             </ul>
 
             <div class="payment-container">
                 <h1>Betalmetod</h1>
-
                 <form action="#">
                     <input type="radio" name="payment" id="visa">
                     <input type="radio" name="payment" id="mastercard">
                     <input type="radio" name="payment" id="paypal">
-                    <input type="radio" name="payment" id="AMEX">
+                    <input type="radio" name="payment" id="klarna">
 
-
-                    <div class="category">
-                        <label for="visa" class="visaMethod">
-                            <div class="imgName">
-                                <div class="imgContainer visa">
-                                    <img src="https://i.ibb.co/vjQCN4y/Visa-Card.png" alt="">
+                    <div class="payment-methods">
+                        <label for="visa" class="visa-method">
+                            <div class="img-name">
+                                <div class="img-container">
+                                    <img src="../assets/paymentLogos/visa.png" alt="visa-logo">
                                 </div>
-                                <span class="name">VISA</span>
+                                <span>VISA</span>
                             </div>
+                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
                             <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
                         </label>
 
-                        <label for="mastercard" class="mastercardMethod">
-                            <div class="imgName">
-                                <div class="imgContainer mastercard">
-                                    <img src="https://i.ibb.co/vdbBkgT/mastercard.jpg" alt="">
+                        <label for="mastercard" class="mastercard-method">
+                            <div class="img-name">
+                                <div class="img-container">
+                                    <img src="../assets/paymentLogos/mastercard.jpg" alt="mastercard-logo">
                                 </div>
-                                <span class="name">Mastercard</span>
+                                <span>Mastercard</span>
                             </div>
+                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
                             <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
                         </label>
 
-                        <label for="paypal" class="paypalMethod">
-                            <div class="imgName">
-                                <div class="imgContainer paypal">
-                                    <img src="https://i.ibb.co/KVF3mr1/paypal.png" alt="">
+                        <label for="paypal" class="paypal-method">
+                            <div class="img-name">
+                                <div class="img-container">
+                                    <img src="../assets/paymentLogos/paypal.png" alt="paypal-logo">
                                 </div>
-                                <span class="name">Paypal</span>
+                                <span>Paypal</span>
                             </div>
+                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
                             <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
                         </label>
 
-                        <label for="AMEX" class="amexMethod">
-                            <div class="imgName">
-                                <div class="imgContainer AMEX">
-                                    <img src="https://i.ibb.co/wQnrX86/American-Express.jpg" alt="">
+                        <label for="klarna" class="klarna-method">
+                            <div class="img-name">
+                                <div class="img-container">
+                                    <img src="../assets/paymentLogos/klarna.png" alt="Klarna-logo">
                                 </div>
-                                <span class="name">AMEX</span>
+                                <span>Klarna</span>
                             </div>
+                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
                             <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
                         </label>
                     </div>
@@ -89,25 +92,119 @@
                             <label for="address">Adress</label>
                             <input type="text" id="address" name="address">
                         </div>
+
+                        <div class="form-group">
+                            <label for="postCode">Postnummer</label>
+                            <input type="text" id="postCode" name="postCode">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Stad</label>
+                            <input type="text" id="city" name="city">
+                        </div>
+                        <div class="form-group">
+                            <label for="ort">Ort</label>
+                            <input type="text" id="ort" name="ort">
+                        </div>
                     </form>
                 </div>
-
-
             </div>
 
             <div class="price">
-                <h1> Total belopp: 999 999 SEK </h1>
+                <h1> Total belopp: {{ pris }} SEK </h1>
+                <!-- {{ pris }} där pris ör importerat från varugorgs koomponentent-->
                 <h4>inckl momos</h4>
-                <button>Slutför köp</button>
+                <button type="button" @click="handleSubmit">Slutför köp</button>
             </div>
 
+            <div id="paymentSuccessModal" class="modal" v-if="showModal">
+                <div class="modal-content">
+                    <h2>Betalning genomförd</h2>
+                    <span class="close-button" @click="closeModal">&times;</span>
+                    <p>Din order har bekräftats</p>
+                </div>
+            </div>
         </div>
     </main>
 </template>
 
+<script>
+
+
+
+
+export default {
+    data() {
+        return {
+            pris: 9999,
+            showModal: false,
+        }
+    },
+    methods: {
+        validateForm() {
+            let formIsValid = true;
+            let form = document.getElementById('user-information-form');
+            let inputs = form.getElementsByTagName('input');
+
+            document.querySelectorAll('.error-message').forEach(el => el.remove());
+
+            for (let input of inputs) {
+                // Kollar om input är tom
+                if (input.value.trim() === '') {
+                    this.showError(input, 'Fyll i detta fält');
+                    formIsValid = false;
+                }
+
+                // verifierar email
+                if (input.type === 'email' && !this.validateEmail(input.value)) {
+                    this.showError(input, 'Ange en giltig e-postadress');
+                    formIsValid = false;
+                }
+
+                // verifierar telefonnummer
+                if (input.name === 'phoneNumber' && !this.validatePhoneNumber(input.value)) {
+                    this.showError(input, 'Ange ett giltigt telefonnummer');
+                    formIsValid = false;
+                }
+            }
+
+            return formIsValid;
+        },
+        showError(input, message) {
+            const error = document.createElement('div');
+            error.className = 'error-message';
+            error.style.color = 'red';
+            error.innerText = message;
+            input.style.borderColor = 'red';
+            input.parentNode.insertBefore(error, input.nextSibling);
+        },
+        validateEmail(email) {
+            // Validates email addresses with a regular expression (RegExp)
+            const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            return re.test(email.toLowerCase());
+        },
+        validatePhoneNumber(number) {
+            const re = /^\d{10}$/;
+            return re.test(number);
+        },
+        handleSubmit() {
+            console.log("handleSubmit called");
+            if (this.validateForm()) {
+                this.showModal = true;
+            } else {
+                console.log("Validation failed. Form not submitted.");
+            }
+        },
+        onPaymentSuccess() {
+            this.showModal = true;
+        },
+        closeModal() {
+            this.showModal = false;
+        },
+    }
+}
+</script>
 
 <style scoped>
-/* Reset styles */
 * {
     margin: 0;
     padding: 0;
@@ -115,7 +212,6 @@
     box-sizing: border-box;
 }
 
-/* Main container styles */
 main {
     display: flex;
     justify-content: center;
@@ -125,7 +221,6 @@ main {
     margin-bottom: 10rem;
 }
 
-/* Body styles */
 body {
     display: flex;
     justify-content: center;
@@ -133,13 +228,15 @@ body {
     min-height: 100vh;
 }
 
-/* Global link styles */
+h1 {
+    margin-bottom: 3rem;
+}
+
 a {
     text-decoration: none;
     color: #333;
 }
 
-/* Breadcrumb styles */
 .breadcrumb {
     padding: 1rem 0;
 }
@@ -153,9 +250,6 @@ ul.breadcrumb li+li:before {
     content: '/';
 }
 
-
-
-/* Container styles */
 .container {
     padding: 32px;
     height: fit-content;
@@ -164,7 +258,6 @@ ul.breadcrumb li+li:before {
     border-radius: 15px;
 }
 
-/* Payment container styles */
 .payment-container {
     margin: 5em auto;
     width: 90%;
@@ -174,13 +267,11 @@ ul.breadcrumb li+li:before {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-/* Payment form input styles */
 .payment-container form input {
     display: none;
 }
 
-/* Payment form category styles */
-.category {
+.payment-methods {
     margin-top: 10 px;
     padding-top: 20 px;
     display: grid;
@@ -188,8 +279,7 @@ ul.breadcrumb li+li:before {
     grid-gap: 8px;
 }
 
-/* Category label styles */
-.category label {
+.payment-methods label {
     height: 100px;
     box-shadow: rgba(0, 0, 0, 0.5) 1px 2px 8px;
     display: flex;
@@ -200,53 +290,43 @@ ul.breadcrumb li+li:before {
     position: relative;
 }
 
-/* Category selection styles */
-#visa:checked~.category .visaMethod,
-#mastercard:checked~.category .mastercardMethod,
-#paypal:checked~.category .paypalMethod,
-#AMEX:checked~.category .amexMethod {
+/* lägger till en box shadow till betalmetoden när motsvarande input är markerad */
+/* `~` refererar till elementets `siblings` */
+#visa:checked~.payment-methods .visa-method,
+#mastercard:checked~.payment-methods .mastercard-method,
+#paypal:checked~.payment-methods .paypal-method,
+#klarna:checked~.payment-methods .klarna-method {
     box-shadow: 0px 0px 0px 1px #3838f4;
 }
 
-/* Category checkmark styles */
-#visa:checked~.category .visaMethod .check,
-#mastercard:checked~.category .mastercardMethod .check,
-#paypal:checked~.category .paypalMethod .check,
-#AMEX:checked~.category .amexMethod .check {
+/* visar checkmark när motsvarande input är markerad */
+#visa:checked~.payment-methods .visa-method .check,
+#mastercard:checked~.payment-methods .mastercard-method .check,
+#paypal:checked~.payment-methods .paypal-method .check,
+#klarna:checked~.payment-methods .klarna-method .check {
     display: block;
 }
 
-/* Label and image name styles */
-.imgName {
+/* betalmetodens img och namn container */
+.img-name {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-/* Image name span styles */
-.imgName span {
+/* betalningsmetodens text */
+.img-name span {
     font-weight: 500;
     font-size: 22px;
 }
 
-/* Image payment container styles */
-.imgName .imgpayment-container {
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 35%;
-    transform: translateY(-35%);
-}
-
-/* Image styles */
-.imgContainer img {
+/* betalningsmetodens logo */
+.img-container img {
     width: 70px;
     height: auto;
 }
 
-/* Checkmark styles */
+/* Checkmark för vald betalningsmetod */
 .check {
     display: none;
     position: absolute;
@@ -259,8 +339,6 @@ ul.breadcrumb li+li:before {
 }
 
 
-/* Form payment container styles */
-
 .delivery-information {
     margin: 5em auto;
     width: 90%;
@@ -269,10 +347,6 @@ ul.breadcrumb li+li:before {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
         0 5px 12px -2px rgba(0, 0, 0, 0.1),
         0 18px 36px -6px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    margin-bottom: 3rem;
 }
 
 .delivery-information .form-group {
@@ -301,7 +375,7 @@ h1 {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-.delivery-information .form-container {
+.form-container {
     display: flex;
     justify-content: center;
 }
@@ -311,8 +385,6 @@ h1 {
 }
 
 
-
-/* Price section styles */
 .price {
     display: flex;
     flex-direction: column;
@@ -325,7 +397,6 @@ h1 {
     width: 100%;
 }
 
-/* Price section heading styles */
 .price h1 {
     margin: 2rem 0;
     font-size: 2rem;
@@ -334,7 +405,6 @@ h1 {
     color: #333;
 }
 
-/* Price section subheading styles */
 .price h4 {
     font-size: 1rem;
     font-weight: 400;
@@ -358,9 +428,53 @@ h1 {
     cursor: pointer;
 }
 
+/* Modal (pop-up rutan för order bekräftelse) */
+.modal {
+    z-index: 1000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+}
+
+/* Modal close button */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* simpel responsivitet */
 /* Media query for screens larger than 1200px */
 @media (min-width: 1201px) {
-    .payment-container form .category {
+    .payment-container form .payment-methods {
         grid-template-columns: repeat(2, 2fr);
         height: fit-content;
     }
@@ -384,7 +498,7 @@ h1 {
         margin-top: 2rem;
     }
 
-    .category label {
+    .payment-methods label {
         height: 75px;
     }
 }
@@ -408,8 +522,8 @@ h1 {
     }
 
     .delivery-information {
-        margin: 2rem auto;
-        padding: 0;
+        margin: 2rem 0 5rem 0;
+        padding: 16px;
         width: 100%;
     }
 }</style>
