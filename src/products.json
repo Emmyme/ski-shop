@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "ProductName": "Helmet",
+    "price": 699,
+    "image": "src/images/Helmet.png",
+    "category": "Skidutrustning"
+  },
+  {
+    "id": 2,
+    "ProductName": "Skidor",
+    "price": 2799,
+    "image": "src/images/Skidor.png",
+    "category": "Skidor"
+  },
+  {
+    "id": 3,
+    "ProductName": "Pjäxor",
+    "price": 5499,
+    "image": "src/images/Pjäxor.png",
+    "category": "Pjäxor"
+  }
+]

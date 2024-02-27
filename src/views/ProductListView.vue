@@ -1,3 +1,15 @@
+<script>
+// Importerar ProductList komponenten
+import ProductList from '@/components/ProductList.vue'
+
+// Denna komponent inkluderar ProductList för att använda den i mallen.
+export default {
+  components: {
+    ProductList
+  }
+}
+</script>
+
 <!-- Vy för att visa produktlistan -->
 <template>
   <div>
@@ -6,17 +18,4 @@
   </div>
 </template>
 
-<script>
-// Importerar ProductList komponenten
-import ProductList from '@/components/ProductList.vue';
-
-// Denna komponent inkluderar ProductList för att använda den i mallen.
-export default {
-  components: {
-    ProductList,
-  },
-};
-</script>
-
-<style scoped>
-</style>
+<style scoped></style>
