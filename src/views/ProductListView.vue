@@ -12,10 +12,9 @@ export default {
 
 <!-- Vy för att visa produktlistan -->
 <template>
-  <div>
-    <h1>Product List</h1>
+  <main>
     <ProductList />
-  </div>
+  </main>
 </template>
 
 <style scoped></style>

@@ -3,15 +3,20 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
-    <div>
-      <nav>
-        <RouterLink to="/ProductListView" class="ProductListViewLink">Produkter</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div id="app">
+    <header>
+      <div class="navbar">
+        <nav>
+          <ul>
+            <li>
+              <RouterLink to="/ProductListView" class="ProductListViewLink">Produkter</RouterLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <RouterView />
+  </div>
 </template>
 
 <style scoped></style>

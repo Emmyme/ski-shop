@@ -1,42 +1,42 @@
-<!-- Komponent för produktlistan -->
-
-<!-- HTML logik för att visa produkterna på sidan -->
 <template>
   <div class="product-list">
-    <div v-for="product in products" class="product-card">
-      <img :src="product.image" alt="Product Image" />
-      <h3>{{ product.ProductName }}</h3>
-      <p>{{ product.price }} SEK</p>
+    <div v-for="product in products" :key="product.id" class="product-card">
+      <div @click="productClicked(product)">
+        <img :src="product.image" alt="Product Image" />
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.price }} SEK</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { fetchData } from '../services/service.js'
+
 export default {
   data() {
     return {
-      products: [] // produktlistan kommer att gå här
+      products: []
     }
   },
-  mounted() {
-    // Hämta produkter när komponenten monteras
+  created() {
     this.fetchProducts()
   },
   methods: {
     async fetchProducts() {
-      // Hämta produktlistan från API eller lokal datafil
       try {
-        const response = await fetch('src/products.json')
-        const data = await response.json()
+        const data = await fetchData()
         this.products = data
       } catch (error) {
         console.error('Error fetching products:', error)
       }
+    },
+    productClicked(product) {
+      console.log('Produkt klickad:', product)
     }
   }
 }
 </script>
-
 <style scoped>
 .product-list {
   display: grid;
@@ -48,6 +48,7 @@ export default {
   background-color: #f0f0f0;
   padding: 20px;
   text-align: center;
+  cursor: pointer;
 }
 
 .product-card img {
@@ -63,7 +64,7 @@ export default {
 
 @media (max-width: 767px) {
   .product-card {
-    width: 100%; /* Visa ett kort per rad i mobilt läge */
+    width: 100%;
   }
 }
 </style>
