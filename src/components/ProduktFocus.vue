@@ -1,37 +1,51 @@
 <template>
-  <!-- Denna div innehåller breadcrumbs och kan göras om till en egen komponent om det behövs -->
-
-  <div class="Produktsida">
+  <!-- V-if rendrerar bara product när den har laddats -->
+  <div class="Produktsida" v-if="product">
     <div>
+      <!-- Brödsmulor för navigering -->
       <ul class="breadcrumb">
-        <li><a href="">Home</a></li>
-        <li><a href="">Produktlista</a></li>
-        <!-- Textinterpolering för att dynamiskt hämta namnet på prduktent, exempelvid {{ product.name }}-->
-        <li>Produktnamn</li>
+        <li><a href="#">Home</a></li>
+        <li><router-link to="/Produkt">Produktlista</router-link></li>
+        <li>{{ product.title }}</li>
       </ul>
     </div>
 
     <div class="image">
-      <!-- Placeholder bild för att få en tydligare bild av hur det kommer att se ut när sidan är klar-->
-      <img src="../images/Helmet Test.png" alt="" />
+      <!-- Produktbild -->
+      <img :src="product.image" alt="Product Image" />
     </div>
 
     <div class="info">
-      <h1>Produktnamn</h1>
+      <h1>{{ product.title }}</h1>
       <h2>Beskrivning:</h2>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit a saepe deserunt iste alias
-        dolorem explicabo tenetur aperiam, excepturi hic nemo ipsam expedita dolor esse qui minima
-        labore ut, sint architecto ea laboriosam, ipsa fugit. Ratione veritatis alias maiores ex.
-      </p>
+      <p>{{ product.description }}</p>
+    </div>
+
+    <div class="purchase">
+      <!-- Lägg till i varukorgen-knapp-->
+      <router-link to="/cart"><button @click="addToCart">Lägg till i varukorg</button></router-link>
     </div>
   </div>
 </template>
 
 <script>
+import { fetchData } from '../services/service.js'
+import { useCartStore } from '../stores/cart'
+
 export default {
-  setup() {
-    return {}
+  data() {
+    return { product: null }
+  },
+  created() {
+    /* Fetchar datan baserat på vilket id som används i adressfältet.
+    Om vi använder id 5 så hämtas array[4]. */
+    fetchData().then((data) => (this.product = data[this.$route.params.id - 1]))
+  },
+  methods: {
+    addToCart() {
+      /* Lägger till den nuvaranda produkten i varukorgen (se cart.js för förstå hur den fungerar) */
+      useCartStore().addProduct(this.product)
+    }
   }
 }
 </script>
@@ -66,6 +80,8 @@ ul.breadcrumb li + li:before {
 .image img {
   margin: auto;
   display: block;
+  padding: 2rem;
+  max-height: 500px;
 }
 
 .info h1 {
@@ -75,5 +91,18 @@ ul.breadcrumb li + li:before {
 .info p {
   width: 50%;
   font-size: 1.5rem;
+}
+
+.purchase button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #056cb7;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.purchase button:hover {
+  background-color: #7db9e4;
 }
 </style>
