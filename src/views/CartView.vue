@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
 import { useCartStore } from '../stores/cart.js'
 
@@ -31,7 +32,7 @@ for (let i = 0; i < cart.items.length; i++) {
     <div id="total">
       <h4>Totalt: {{ totalSum }}:-</h4>
     </div>
-    <RouterLink to="/" id="payment-link">Till kassan</RouterLink>
+    <RouterLink to="/payment" id="payment-link">Till kassan</RouterLink>
   </div>
 </template>
 
