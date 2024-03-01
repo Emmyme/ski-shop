@@ -1,5 +1,4 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
 import { useCartStore } from '../stores/cart.js'
 
@@ -117,3 +116,5 @@ ul {
   background-color: #0263a8;
 }
 </style>
+
+
