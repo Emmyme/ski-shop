@@ -178,7 +178,7 @@ export default {
             input.parentNode.insertBefore(error, input.nextSibling);
         },
         validateEmail(email) {
-            // Validates email addresses with a regular expression (RegEx), RegEx är ett sätt att matcha strängar mot ett mönster
+            // Validates email addresses with a regular expression (RegEx), RegEx är ett sätt att matcha strängar mot ett mönster   
             const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             return re.test(email.toLowerCase());
         },
