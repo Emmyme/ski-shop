@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
@@ -7,13 +8,19 @@ import { RouterLink, RouterView } from 'vue-router'
     <div>
       <nav >
         <RouterLink to="/BetalSida">BetalSida</RouterLink>
-        <RouterLink to="/ProduktSida">Produktsida</RouterLink>
       </nav>
     </div>
   </header>
 
   <RouterView />
+  <Footer />
 </template>
 
-<style scoped>
-</style>
+<script>
+export default {
+  name: 'App',
+  components: {
+    Footer
+  }
+}
+</script>

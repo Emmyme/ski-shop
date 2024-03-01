@@ -6,66 +6,10 @@
     <main>
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Varukorg</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/varukoorg">Varukorg</a></li>
                 <li>Betalning</li>
             </ul>
-
-            <div class="payment-container">
-                <h1>Betalmetod</h1>
-                <form action="#">
-                    <input type="radio" name="payment" id="visa">
-                    <input type="radio" name="payment" id="mastercard">
-                    <input type="radio" name="payment" id="paypal">
-                    <input type="radio" name="payment" id="klarna">
-
-                    <div class="payment-methods">
-                        <label for="visa" class="visa-method">
-                            <div class="img-name">
-                                <div class="img-container">
-                                    <img src="../assets/paymentLogos/visa.png" alt="visa-logo">
-                                </div>
-                                <span>VISA</span>
-                            </div>
-                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
-                            <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
-                        </label>
-
-                        <label for="mastercard" class="mastercard-method">
-                            <div class="img-name">
-                                <div class="img-container">
-                                    <img src="../assets/paymentLogos/mastercard.jpg" alt="mastercard-logo">
-                                </div>
-                                <span>Mastercard</span>
-                            </div>
-                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
-                            <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
-                        </label>
-
-                        <label for="paypal" class="paypal-method">
-                            <div class="img-name">
-                                <div class="img-container">
-                                    <img src="../assets/paymentLogos/paypal.png" alt="paypal-logo">
-                                </div>
-                                <span>Paypal</span>
-                            </div>
-                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
-                            <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
-                        </label>
-
-                        <label for="klarna" class="klarna-method">
-                            <div class="img-name">
-                                <div class="img-container">
-                                    <img src="../assets/paymentLogos/klarna.png" alt="Klarna-logo">
-                                </div>
-                                <span>Klarna</span>
-                            </div>
-                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
-                            <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
-                        </label>
-                    </div>
-                </form>
-            </div>
 
             <div class="delivery-information">
                 <h1>Leverans adress</h1>
@@ -109,9 +53,66 @@
                 </div>
             </div>
 
+            
+            <div class="payment-container">
+                <h1>Betalmetod</h1>
+                <form action="#">
+                    <input type="radio" name="payment" id="visa">
+                    <input type="radio" name="payment" id="apple-pay">
+                    <input type="radio" name="payment" id="paypal">
+                    <input type="radio" name="payment" id="klarna">
+
+                    <div class="payment-methods">
+                        <label for="visa" class="visa-method">
+                            <div class="img-name">
+                                <div class="img-container">
+                                    <img src="../assets/paymentLogos/visa.png" alt="visa-logo">
+                                </div>
+                                <span>VISA</span>
+                            </div>
+                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
+                            <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
+                        </label>
+
+                        <label for="apple-pay" class="apple-pay-method">
+                            <div class="img-name">
+                                <div class="img-container">
+                                    <img src="../assets/paymentLogos/apple-pay.png" alt="apple-pay-logo">
+                                </div>
+                                <span>Apple pay</span>
+                            </div>
+                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
+                            <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
+                        </label>
+
+                        <label for="paypal" class="paypal-method">
+                            <div class="img-name">
+                                <div class="img-container">
+                                    <img src="../assets/paymentLogos/paypal.png" alt="paypal-logo">
+                                </div>
+                                <span>Paypal</span>
+                            </div>
+                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
+                            <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
+                        </label>
+
+                        <label for="klarna" class="klarna-method">
+                            <div class="img-name">
+                                <div class="img-container">
+                                    <img src="../assets/paymentLogos/klarna.png" alt="Klarna-logo">
+                                </div>
+                                <span>Klarna</span>
+                            </div>
+                            <!-- class="fa-solid fa-circle-check" refererar till checkmark iconen från font awesome -->
+                            <span class="check"><i class="fa-solid fa-circle-check" style="color: #3838f4;"></i></span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+
             <div class="price">
                 <h1> Total belopp: {{ pris }} SEK </h1>
-                <!-- {{ pris }} där pris ör importerat från varugorgs koomponentent-->
                 <h4>inckl momos</h4>
                 <button type="button" @click="handleSubmit">Slutför köp</button>
             </div>
@@ -130,11 +131,10 @@
 <script>
 
 
-
-
 export default {
     data() {
         return {
+            // {{ pris }} pris är importerat från varugorgs komponentent
             pris: 9999,
             showModal: false,
         }
@@ -178,7 +178,7 @@ export default {
             input.parentNode.insertBefore(error, input.nextSibling);
         },
         validateEmail(email) {
-            // Validates email addresses with a regular expression (RegExp)
+            // Validates email addresses with a regular expression (RegEx), Ett RegEx uttryck är en sträng som följer särskilda syntaxregler.
             const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             return re.test(email.toLowerCase());
         },
@@ -213,20 +213,14 @@ export default {
 }
 
 main {
+   
     display: flex;
     justify-content: center;
     align-items: center;
     height: fit-content;
     width: 100%;
-    margin-bottom: 10rem;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
 
 h1 {
     margin-bottom: 3rem;
@@ -251,11 +245,13 @@ ul.breadcrumb li+li:before {
 }
 
 .container {
+    background-color: #fff;
     padding: 32px;
     height: fit-content;
     width: 40vw;
     margin-top: 2rem;
     border-radius: 15px;
+    margin: 5rem 0rem;
 }
 
 .payment-container {
@@ -293,7 +289,7 @@ ul.breadcrumb li+li:before {
 /* lägger till en box shadow till betalmetoden när motsvarande input är markerad */
 /* `~` refererar till elementets `siblings` */
 #visa:checked~.payment-methods .visa-method,
-#mastercard:checked~.payment-methods .mastercard-method,
+#apple-pay:checked~.payment-methods .apple-pay-method,
 #paypal:checked~.payment-methods .paypal-method,
 #klarna:checked~.payment-methods .klarna-method {
     box-shadow: 0px 0px 0px 1px #3838f4;
@@ -301,7 +297,7 @@ ul.breadcrumb li+li:before {
 
 /* visar checkmark när motsvarande input är markerad */
 #visa:checked~.payment-methods .visa-method .check,
-#mastercard:checked~.payment-methods .mastercard-method .check,
+#apple-pay:checked~.payment-methods .apple-pay-method .check,
 #paypal:checked~.payment-methods .paypal-method .check,
 #klarna:checked~.payment-methods .klarna-method .check {
     display: block;
@@ -311,6 +307,7 @@ ul.breadcrumb li+li:before {
 .img-name {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
 }
 
@@ -318,6 +315,11 @@ ul.breadcrumb li+li:before {
 .img-name span {
     font-weight: 500;
     font-size: 22px;
+}
+
+.img-container {
+    display: flex;
+    align-items: center;
 }
 
 /* betalningsmetodens logo */
@@ -418,13 +420,13 @@ ul.breadcrumb li+li:before {
     border-radius: 5px;
     margin-top: 2rem;
     width: fit-content;
-    padding: 2rem 1rem 2rem 1rem;
+    padding: 1rem 3rem;
     font-size: 22px;
-    background-color: #3838f4;
+    background-color: #056cb7;
 }
 
 .price button:hover {
-    background-color: #3232d8;
+    background-color: #0468af;
     cursor: pointer;
 }
 
@@ -489,8 +491,6 @@ ul.breadcrumb li+li:before {
 /* Media query for screens between 501px and 1200px */
 @media (min-width: 501px) and (max-width: 1200px) {
     .container {
-        margin: 0;
-        padding: 0;
         width: 80vw;
     }
 
@@ -526,4 +526,5 @@ ul.breadcrumb li+li:before {
         padding: 16px;
         width: 100%;
     }
-}</style>
+}
+</style>
