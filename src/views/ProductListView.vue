@@ -33,7 +33,7 @@ export default {
 }
 
 .category-button {
-  background-color: #87ceeb;
+  background-color: #7db9e4;
   color: white;
   padding: 8px 16px;
   margin: 8px;

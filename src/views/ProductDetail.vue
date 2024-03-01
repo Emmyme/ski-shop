@@ -1,3 +1,5 @@
+<!-- ProduktDetail.vue - En test view för att se om man faktsikt kan klicka på en produkt och komma till den rätta produktsidan -->
+
 <template>
   <div>
     <h1>{{ product.title }}</h1>

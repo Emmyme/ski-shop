@@ -1,3 +1,4 @@
+<!-- HTML logik för att visa produktlistan -->
 <template>
   <div class="product-list">
     <div v-for="product in products" :key="product.id" class="product-card">
@@ -13,7 +14,6 @@
 <script>
 import { fetchData } from '../services/service.js'
 import { useProductStore } from '@/stores/productStore'
-import { useRouter } from 'vue-router'
 
 export default {
   data() {
@@ -22,20 +22,24 @@ export default {
     }
   },
   created() {
+    /* När komponenten skapas, hämta produkterna från API-tjänsten */
     this.fetchProducts()
   },
   methods: {
+    /* Funktion för att hämta produkter från API-tjänsten */
     async fetchProducts() {
       try {
         const data = await fetchData()
+
+        /* Tilldela hämtad data till komponentens lokala data (products) */
         this.products = data
       } catch (error) {
+        /* Vid fel, logga felmeddelandet till konsolen */
         console.error('Error fetching products:', error)
       }
     },
     productClicked(product) {
       const productStore = useProductStore()
-      const router = useRouter()
 
       /* Ange den valda produkten i store */
       productStore.setSelectedProduct(product)
@@ -70,12 +74,13 @@ export default {
 
 .product-card img {
   max-width: 100%;
-  height: auto;
+  height: 150px;
+  object-fit: cover;
 }
 
 @media (min-width: 768px) {
   .product-list {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
