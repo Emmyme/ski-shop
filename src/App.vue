@@ -19,4 +19,12 @@ import { RouterLink, RouterView } from 'vue-router'
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+nav {
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+}
+</style>

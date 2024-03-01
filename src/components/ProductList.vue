@@ -37,7 +37,14 @@ export default {
   }
 }
 </script>
+
 <style scoped>
+* {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
 .product-list {
   display: grid;
   gap: 20px;
@@ -49,6 +56,7 @@ export default {
   padding: 20px;
   text-align: center;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .product-card img {
@@ -58,7 +66,7 @@ export default {
 
 @media (min-width: 768px) {
   .product-list {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 
