@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import { useCartStore } from '../stores/counter.js'
+import { useCartStore } from '../stores/cart.js'
 
 //hämtar antalet produkter
 let numOfProducts = useCartStore()
