@@ -14,7 +14,6 @@
           rel="noopener noreferrer">https://github.com/Emmyme/ski-shop</a>
       </div>
     </div>
-
     <div class="payment-methods">
       <img src="../assets/paymentLogos/klarna.png" alt="Betalning via Klarna">
       <img src="../assets/paymentLogos/paypal.png" alt="Betalning via PayPal">
@@ -35,7 +34,6 @@
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   padding: 40px 20px;
-  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .x {
@@ -51,7 +49,8 @@
 .created-by {
   align-items: center;
   flex: 1;
-  margin: 10px;
+  margin: 1rem 0;
+  text-align: center;
 }
 
 .payment-methods {
@@ -59,18 +58,13 @@
   justify-content: space-around;
   align-items: center;
   flex: 2;
-  width: 100%;
-  margin: 20px 0;
+  width: 50%;
+  margin-top: 2rem;
 }
 
 .payment-methods img {
-  height: 40px;
-  margin: 0 15px;
+  height: 25px;
   transition: transform 0.3s ease;
-}
-
-.payment-methods img:hover {
-  transform: scale(1.1);
 }
 
 h2 {
@@ -82,7 +76,6 @@ h2 {
 p,
 a {
   font-size: 1rem;
-  /* Optimal readability */
   line-height: 1.6;
   color: #ffffff;
 }
@@ -102,14 +95,17 @@ a:hover {
     flex-direction: column;
     align-items: center;
   }
+
   .contact-info,
   .created-by {
-   width: 90%;
-   margin-bottom: 1rem;
+    width: 90%;
+    margin-bottom: 1rem;
   }
+
   .payment-methods {
     justify-content: space-between;
   }
+
   .payment-methods img {
     height: 25px;
     margin: 5px;
