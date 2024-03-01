@@ -3,9 +3,13 @@
   <div class="product-list">
     <div v-for="product in products" :key="product.id" class="product-card">
       <div @click="productClicked(product)">
-        <img :src="product.image" alt="Product Image" />
-        <h3>{{ product.title }}</h3>
-        <p>{{ product.price }} SEK</p>
+        <div class="image-container">
+          <img :src="product.image" alt="Product Image" class="product-image" />
+        </div>
+        <div class="product-details">
+          <h3 class="product-title">{{ product.title }}</h3>
+          <p class="price">{{ product.price }} SEK</p>
+        </div>
       </div>
     </div>
   </div>
@@ -54,8 +58,8 @@ export default {
 <style scoped>
 * {
   box-sizing: border-box;
-  overflow-x: hidden;
-  padding: 20px;
+  padding: 0;
+  margin: 0;
 }
 
 .product-list {
@@ -65,28 +69,56 @@ export default {
 }
 
 .product-card {
-  background-color: #f0f0f0;
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card div {
+  padding: 10px;
+  width: 100%;
+}
+
+.image-container {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-.product-card img {
+.product-image {
   max-width: 100%;
-  height: 150px;
+  max-height: 100%;
   object-fit: cover;
+}
+
+.product-details {
+  text-align: center;
+}
+
+.product-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
 }
 
 @media (min-width: 768px) {
   .product-list {
     grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (max-width: 767px) {
-  .product-card {
-    width: 100%;
   }
 }
 </style>
