@@ -187,7 +187,7 @@ export default {
             return re.test(number);
         },
         handleSubmit() {
-            console.log("handleSubmit called");
+            console.log("handleSubmit called"); 
             if (this.validateForm()) {
                 this.showModal = true;
             } else {
