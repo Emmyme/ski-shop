@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { fetchData } from '../services/service.js'
+import { fetchData } from '../services/services.js'
 import { useProductStore } from '@/stores/productStore'
 
 export default {
