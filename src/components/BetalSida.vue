@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            
+
             <div class="payment-container">
                 <h1>Betalmetod</h1>
                 <form action="#">
@@ -178,7 +178,7 @@ export default {
             input.parentNode.insertBefore(error, input.nextSibling);
         },
         validateEmail(email) {
-            // Validates email addresses with a regular expression (RegEx), Ett RegEx uttryck är en sträng som följer särskilda syntaxregler.
+            // Validates email addresses with a regular expression (RegEx), RegEx är ett sätt att matcha strängar mot ett mönster
             const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             return re.test(email.toLowerCase());
         },

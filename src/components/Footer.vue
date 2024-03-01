@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <div class="x">
+    <div class="con">
       <div class="contact-info">
         <h2>Kontakta oss</h2>
         <p>Email: contact@skishop.com</p>
@@ -36,7 +36,7 @@
   padding: 40px 20px;
 }
 
-.x {
+.con {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
