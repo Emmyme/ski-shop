@@ -12,6 +12,8 @@
 
 <script>
 import { fetchData } from '../services/service.js'
+import { useProductStore } from '@/stores/productStore'
+import { useRouter } from 'vue-router'
 
 export default {
   data() {
@@ -32,7 +34,14 @@ export default {
       }
     },
     productClicked(product) {
-      console.log('Produkt klickad:', product)
+      const productStore = useProductStore()
+      const router = useRouter()
+
+      /* Ange den valda produkten i store */
+      productStore.setSelectedProduct(product)
+
+      /* Navigera till produktdetaljvyen med rätt id */
+      this.$router.push({ name: 'ProductDetail', params: { id: product.id.toString() } })
     }
   }
 }

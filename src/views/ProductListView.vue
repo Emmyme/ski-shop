@@ -2,7 +2,7 @@
 // Importerar ProductList komponenten
 import ProductList from '@/components/ProductList.vue'
 
-// Denna komponent inkluderar ProductList för att använda den i mallen.
+/* Denna komponent inkluderar ProductList för att använda den i mallen. */
 export default {
   components: {
     ProductList
@@ -35,18 +35,17 @@ export default {
 .category-button {
   background-color: #87ceeb;
   color: white;
-  padding: 8px 16px; /* Minska padding för mindre knappar */
-  margin: 8px; /* Minska marginal för mindre avstånd mellan knapparna */
+  padding: 8px 16px;
+  margin: 8px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  width: 100px; /* Ange en fast bredd för varje knapp */
+  width: 100px;
 }
 
-/* Justera stilar för mindre skärmar */
 @media (max-width: 767px) {
   .category-button {
-    width: calc(100% - 16px); /* Göra knapparna fullbredd minus marginal */
+    width: calc(100% - 16px);
   }
 }
 </style>
