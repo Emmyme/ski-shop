@@ -15,10 +15,10 @@
       </div>
     </div>
     <div class="payment-methods">
-      <img src="../assets/paymentLogos/klarna.png" alt="Betalning via Klarna">
-      <img src="../assets/paymentLogos/paypal.png" alt="Betalning via PayPal">
-      <img src="../assets/paymentLogos/visa.png" alt="Betalning via Visa">
-      <img src="../assets/paymentLogos/apple-pay.png" alt="Betalning via Apple Pay" id="apple">
+      <img src="../images/payment/klarna.png" alt="Betalning via Klarna">
+      <img src="../images/payment/paypal.png" alt="Betalning via PayPal">
+      <img src="../images/payment/Visa-Card.png" alt="Betalning via Visa">
+      <img src="../images/payment/apple-pay.png" alt="Betalning via Apple Pay" id="apple">
     </div>
   </div>
 </template>
@@ -34,7 +34,11 @@
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   padding: 40px 20px;
+  width: 100%; 
+  position: relative;
+  margin-top: auto; 
 }
+
 
 .con {
   display: flex;
