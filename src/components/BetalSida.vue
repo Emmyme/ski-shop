@@ -7,7 +7,7 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="/">Home</a></li>
-                <li><a href="/varukoorg">Varukorg</a></li>
+                <li><a href="/cart">Varukorg</a></li>
                 <li>Betalning</li>
             </ul>
 
@@ -66,7 +66,7 @@
                         <label for="visa" class="visa-method">
                             <div class="img-name">
                                 <div class="img-container">
-                                    <img src="../assets/paymentLogos/visa.png" alt="visa-logo">
+                                    <img src="../images/payment/Visa-Card.png" alt="visa-logo">
                                 </div>
                                 <span>VISA</span>
                             </div>
@@ -77,7 +77,7 @@
                         <label for="apple-pay" class="apple-pay-method">
                             <div class="img-name">
                                 <div class="img-container">
-                                    <img src="../assets/paymentLogos/apple-pay.png" alt="apple-pay-logo">
+                                    <img src="../images/payment/apple-pay.png" alt="apple-pay-logo">
                                 </div>
                                 <span>Apple pay</span>
                             </div>
@@ -88,7 +88,7 @@
                         <label for="paypal" class="paypal-method">
                             <div class="img-name">
                                 <div class="img-container">
-                                    <img src="../assets/paymentLogos/paypal.png" alt="paypal-logo">
+                                    <img src="../images/payment/paypal.png" alt="paypal-logo">
                                 </div>
                                 <span>Paypal</span>
                             </div>
@@ -99,7 +99,7 @@
                         <label for="klarna" class="klarna-method">
                             <div class="img-name">
                                 <div class="img-container">
-                                    <img src="../assets/paymentLogos/klarna.png" alt="Klarna-logo">
+                                    <img src="../images/payment/klarna.png" alt="Klarna-logo">
                                 </div>
                                 <span>Klarna</span>
                             </div>
@@ -284,6 +284,7 @@ ul.breadcrumb li+li:before {
     cursor: pointer;
     border-radius: 5px;
     position: relative;
+    margin: 5px;
 }
 
 /* lägger till en box shadow till betalmetoden när motsvarande input är markerad */

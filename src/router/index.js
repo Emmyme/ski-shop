@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import CartView from '../views/CartView.vue'
 import ProductListView from '../views/ProductListView.vue'
 import ProduktSida from '../views/ProduktSida.vue'
-import BetalSida from '../components/BetalSida.vue'
+import BetalSida from '../views/BetalSida.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
