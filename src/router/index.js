@@ -18,8 +18,8 @@ const router = createRouter({
       component: ProductListView
     },
     {
-      path: '/product',
-      name: 'product',
+      path: '/:id',
+      name: 'ProductDetail',
       component: ProduktSida
     },
     {

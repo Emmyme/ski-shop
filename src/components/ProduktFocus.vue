@@ -53,6 +53,7 @@ export default {
 <style scoped>
 .Produktsida {
   padding: 0 6rem;
+  margin: 3rem;
 }
 
 .breadcrumb {
@@ -60,6 +61,7 @@ export default {
   padding: 1rem 2rem;
   background-color: rgb(229, 229, 229);
   border-radius: 2rem;
+  margin-bottom: 2rem;
 }
 ul.breadcrumb li {
   display: inline;
@@ -100,9 +102,17 @@ ul.breadcrumb li + li:before {
   background-color: #056cb7;
   padding: 20px;
   border-radius: 20px;
+  border-style: none;
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 2rem;
 }
 
 .purchase button:hover {
   background-color: #7db9e4;
+}
+
+.purchase a {
+  text-decoration: none;
 }
 </style>
