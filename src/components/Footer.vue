@@ -36,7 +36,7 @@
   padding: 40px 20px;
   width: 100%; 
   position: relative;
-  margin-top: 3rem; 
+  margin-top: auto; 
 }
 
 
