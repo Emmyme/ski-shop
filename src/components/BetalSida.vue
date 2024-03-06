@@ -111,9 +111,15 @@
             </div>
 
 
-            <div class="price">
+            <div class="price" >
                 <h1> Total belopp: {{ pris }} SEK </h1>
-                <h4>inckl momos</h4>
+                <div class="news-letter" >
+                    <h4>inkl. moms och frakt</h4>
+                    <div>
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">Nyhetsbrev</label>
+                    </div>
+                </div>
                 <button type="button" @click="handleSubmit">Slutför köp</button>
             </div>
 
@@ -401,7 +407,7 @@ ul.breadcrumb li+li:before {
 }
 
 .price h1 {
-    margin: 2rem 0;
+    margin: 1rem 0;
     font-size: 2rem;
     font-weight: 400;
     text-align: center;
@@ -419,7 +425,7 @@ ul.breadcrumb li+li:before {
     color: #fff;
     border: none;
     border-radius: 5px;
-    margin-top: 2rem;
+    margin-top: 3rem;
     width: fit-content;
     padding: 1rem 3rem;
     font-size: 22px;
@@ -429,6 +435,18 @@ ul.breadcrumb li+li:before {
 .price button:hover {
     background-color: #0468af;
     cursor: pointer;
+}
+.news-letter{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    color: #333;
+    font-size: 1rem;
+    margin-top: 8px;
+}
+.news-letter input{
+    margin: 8px;
 }
 
 /* Modal (pop-up rutan för order bekräftelse) */
