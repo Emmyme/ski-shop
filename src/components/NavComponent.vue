@@ -13,7 +13,9 @@ let numOfProducts = useCartStore()
         <h3>SKI</h3>
     </RouterLink>
     </section>
+    
     <section id="navigation">
+      <Router-link to="/wishlist"><p id="wishList" class="fas fa-heart"></p></Router-link>
       <!--Visar antalet produkter i varukorgen och fungerar som länk dit, är korgen tom visas inga siffror-->
       <RouterLink to="/cart" id="cart-link"><p v-if="numOfProducts.itemCount > 0" id="product-amount">{{ numOfProducts.itemCount }}</p><img src="../assets/shopping-cart.svg" alt="varukorg"></RouterLink>
     </section>
@@ -49,6 +51,12 @@ nav {
 #navigation {
   align-self: center;
   margin-left: auto;
+  margin-right: 2rem;
+}
+
+#wishList {
+  font-size: 2.5rem;
+  color: white;
   margin-right: 2rem;
 }
 
