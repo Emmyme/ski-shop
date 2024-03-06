@@ -1,12 +1,8 @@
 <template>
-    <!-- länkar till font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <main>
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/">Home</a></li>
+                <li><a href="./ProductList.vue">Produkt Lista</a></li>
                 <li><a href="/cart">Varukorg</a></li>
                 <li>Betalning</li>
             </ul>
@@ -56,6 +52,7 @@
 
             <div class="payment-container">
                 <h1>Betalmetod</h1>
+                <!-- Varje label refererar till en betalmetod, när inputen är markerad så visas en checkmark -->
                 <form action="#">
                     <input type="radio" name="payment" id="visa">
                     <input type="radio" name="payment" id="apple-pay">
@@ -110,7 +107,6 @@
                 </form>
             </div>
 
-
             <div class="price" >
                 <h1> Total belopp: {{ pris }} SEK </h1>
                 <div class="news-letter" >
@@ -135,8 +131,6 @@
 </template>
 
 <script>
-
-
 export default {
     data() {
         return {
@@ -183,15 +177,18 @@ export default {
             input.style.borderColor = 'red';
             input.parentNode.insertBefore(error, input.nextSibling);
         },
+
+        // Validerar email och telefonnummer med regular expression (RegEx), RegEx är ett sätt att matcha strängar mot ett mönster :)   
         validateEmail(email) {
-            // Validates email addresses with a regular expression (RegEx), RegEx är ett sätt att matcha strängar mot ett mönster   
-            const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            const re = /^(([^<>()[\]\.,;:\s@\"] + (\.[^<>()[\]\.,;:\s@\"]+)*) | (\".+\")) @ (([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             return re.test(email.toLowerCase());
         },
         validatePhoneNumber(number) {
             const re = /^\d{10}$/;
             return re.test(number);
         },
+
+        // visa modalen om validering lyckas
         handleSubmit() {
             console.log("handleSubmit called"); 
             if (this.validateForm()) {
