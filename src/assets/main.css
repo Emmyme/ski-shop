@@ -1,0 +1,15 @@
+<<<<<<< HEAD
+=======
+* {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  width: 100vw;
+}
+>>>>>>> main

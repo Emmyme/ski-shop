@@ -11,6 +11,16 @@
           <p class="price">{{ product.price }} SEK</p>
         </div>
       </div>
+
+      <!-- Önskelista -->
+      <!-- Toggle knapp för att lägga till producten i önskelistan  -->
+      <button @click.stop="toggleWishlist(product)" class="wishlist-toggle">
+        <span v-if="isProductInWishlist(product)" class="wishlist-icon filled">
+          <!-- Hjärt ikon från font-awsome -->
+          <i class="fas fa-heart"></i>
+        </span>
+        <span v-else class="wishlist-icon"><i class="far fa-heart"></i> </span>
+      </button>
     </div>
   </div>
 </template>
@@ -18,6 +28,7 @@
 <script>
 import { fetchData } from '../services/service.js'
 import { useProductStore } from '@/stores/productStore'
+import { useWishlistStore } from '../stores/wishList.js'
 
 export default {
   data() {
@@ -50,6 +61,18 @@ export default {
 
       /* Navigera till produktdetaljvyen med rätt id */
       this.$router.push({ name: 'ProductDetail', params: { id: product.id.toString() } })
+    },
+
+    // Önskelista :)
+    // Funktion för att lägga till/ta bort produkt från önskelistan
+    toggleWishlist(product) {
+      const wishlistStore = useWishlistStore()
+      wishlistStore.toggleProductInWishlist(product)
+    },
+    // Funktion för att kontrollera om produkten finns i önskelistan
+    isProductInWishlist(product) {
+      const wishlistStore = useWishlistStore()
+      return wishlistStore.isInWishlist(product.id)
     }
   }
 }

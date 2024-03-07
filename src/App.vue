@@ -1,22 +1,13 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import NavComponent from './components/NavComponent.vue'
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
-  <div id="app">
-    <header>
-      <div class="navbar">
-        <nav>
-          <ul>
-            <li>
-              <RouterLink to="/ProductListView" class="ProductListViewLink">Produkter</RouterLink>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <RouterView />
-  </div>
+  <NavComponent></NavComponent>
+  <RouterView />
+  <Footer></Footer>
 </template>
 
 <style scoped></style>
