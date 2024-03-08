@@ -1,7 +1,7 @@
 <!-- HTML logik för att visa produktlistan -->
 <template>
   <div class="product-list">
-    <div v-for="product in products" :key="product.id" class="product-card">
+    <div v-for="product in filteredProducts" :key="product.id" class="product-card">
       <div @click="productClicked(product)">
         <div class="image-container">
           <img :src="product.image" alt="Product Image" class="product-image" />
@@ -37,19 +37,25 @@ export default {
     }
   },
   created() {
-    /* När komponenten skapas, hämta produkterna från API-tjänsten */
     this.fetchProducts()
   },
+  props: {
+    selectedCategory: String /* Lägg till en prop för den valda kategorin */
+  },
+  computed: {
+    filteredProducts() {
+      /* Filtrera produkter baserat på den valda kategorin */
+      return this.selectedCategory
+        ? this.products.filter((product) => product.category === this.selectedCategory)
+        : this.products
+    }
+  },
   methods: {
-    /* Funktion för att hämta produkter från API-tjänsten */
     async fetchProducts() {
       try {
         const data = await fetchData()
-
-        /* Tilldela hämtad data till komponentens lokala data (products) */
         this.products = data
       } catch (error) {
-        /* Vid fel, logga felmeddelandet till konsolen */
         console.error('Error fetching products:', error)
       }
     },
