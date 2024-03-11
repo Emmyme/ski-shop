@@ -15,9 +15,9 @@ let numOfProducts = useCartStore()
     </section>
     
     <section id="navigation">
-      <Router-link to="/wishlist"><p id="wishList" class="fas fa-heart"></p></Router-link>
+      <RouterLink to="/wishlist"><p id="wishList" class="fas fa-heart"></p></RouterLink>
       <!--Visar antalet produkter i varukorgen och fungerar som länk dit, är korgen tom visas inga siffror-->
-      <RouterLink to="/cart" id="cart-link"><p v-if="numOfProducts.itemCount > 0" id="product-amount">{{ numOfProducts.itemCount }}</p><img src="../assets/shopping-cart.svg" alt="varukorg"></RouterLink>
+      <RouterLink to="/cart" id="cart-link"><img src="../assets/shopping-cart.svg" alt="varukorg"><p v-show="numOfProducts.itemCount > 0" id="product-amount">{{ numOfProducts.itemCount }}</p></RouterLink>
     </section>
   </nav>
 </template>
@@ -31,7 +31,7 @@ nav {
   background-color: #056cb7;
   width: 100vw;
   height: auto;
-  display: inline-flex;
+  display: flex;
   position: sticky;
 }
 
@@ -80,9 +80,10 @@ nav {
     padding: 0.2rem;
     color: black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    position: absolute;
+    position: relative;
     z-index: 1;
     text-align: center;
     font-weight: 500;
+    
 }
 </style>
