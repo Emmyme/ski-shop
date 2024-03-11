@@ -1,10 +1,11 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
 import { useCartStore } from '../stores/cart.js'
+import BetalSida from '../components/BetalSida.vue'
 
 const cart = useCartStore()
 let totalSum = ref(0)
+let showPayment = ref(false)
 
 
 //räknar ut priset på individuella produkter och adderar dem för att få totalsumman
@@ -12,10 +13,16 @@ for (let i = 0; i < cart.items.length; i++) {
   let productPrice = ref(cart.items[i].price)
   totalSum.value += productPrice.value
 }
+
+function displayChild() {
+  showPayment.value = true
+}
+
+
 </script>
 
 <template>
-  <div id="cart-container">
+  <div id="cart-container" v-if="!showPayment">
     <div id="product-list">
       <ul>
         <!--hämtar och visar produkter som är tillagda-->
@@ -32,8 +39,10 @@ for (let i = 0; i < cart.items.length; i++) {
     <div id="total">
       <h4>Totalt: {{ totalSum }}:-</h4>
     </div>
-    <RouterLink to="/payment" id="payment-link">Till kassan</RouterLink>
+    <button id="payment-link" @click="displayChild()">Till kassan</button>
   </div>
+  <BetalSida :price="totalSum" v-else></BetalSida>
+  
 </template>
 
 <style>
@@ -45,6 +54,7 @@ for (let i = 0; i < cart.items.length; i++) {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 1.5rem;
   color: rgba(0, 0, 0, 0.801);
+  margin-bottom: 6rem;
 }
 
 #product-list {

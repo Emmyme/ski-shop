@@ -91,6 +91,7 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-right: 1rem;
 }
 
 @media (max-width: 1000px) {
