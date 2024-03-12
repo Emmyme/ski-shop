@@ -80,7 +80,9 @@ nav {
     padding: 0.2rem;
     color: black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    position: relative;
+    position: absolute;
+    margin-top: -3.5rem;
+    margin-left: 4.5rem;
     z-index: 1;
     text-align: center;
     font-weight: 500;
