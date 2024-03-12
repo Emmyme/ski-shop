@@ -106,6 +106,8 @@ ul {
 #payment-link {
   margin-top: 3rem;
   background-color: #056cb7;
+  border: none;
+  font-size: 1.5rem;
   padding: 1rem;
   border-radius: 1rem;
   color: white;
