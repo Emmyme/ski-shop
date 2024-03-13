@@ -5,7 +5,7 @@ import ProduktSida from '../views/ProduktSida.vue'
 import WishList from '../views/WishList.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/cart',
@@ -26,8 +26,7 @@ const router = createRouter({
       path: '/wishlist',
       name: 'wishlist',
       component: WishList
-    } 
-
+    }
   ]
 })
 
