@@ -1,6 +1,6 @@
 <template>
   <div class="wishlist">
-    <h2>My Wishlist</h2>
+    <h2>Önskelista</h2>
     <div v-for="product in wishlist.items" :key="product.id" class="product-card">
       <div class="image-container">
         <img :src="product.image" alt="Product Image" class="product-image" />

@@ -2,8 +2,8 @@
     <main>
         <div class="container">
             <ul class="breadcrumb">
-                <li><router-link to="/products">Produkt Lista</router-link></li>
-                <li><router-link to="/cart">Produkt Lista</router-link></li>
+                <li><router-link to="/products">Produktlista</router-link></li>
+                <li><router-link to="/cart">Varukorg</router-link></li>
                 <li>Betalning</li>
             </ul>
 
