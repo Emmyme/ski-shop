@@ -95,6 +95,7 @@ export default {
   display: grid;
   gap: 20px;
   justify-content: center;
+  margin: 2rem;
 }
 
 .product-card {
@@ -106,6 +107,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
+  margin: 1rem;
 }
 
 .product-card:hover {

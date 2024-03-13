@@ -4,7 +4,7 @@
     <div>
       <!-- Brödsmulor för navigering -->
       <ul class="breadcrumb">
-        <li><a href="#">Home</a></li>
+        <li><router-link to="/">Hem</router-link></li>
         <li><router-link to="/Produkt">Produktlista</router-link></li>
         <li>{{ product.title }}</li>
       </ul>
@@ -84,15 +84,18 @@ ul.breadcrumb li + li:before {
   display: block;
   padding: 2rem;
   max-height: 500px;
+  border-radius: 3rem;
 }
 
 .info h1 {
+  margin-top: 2rem;
   font-size: 3rem;
 }
 
 .info p {
   width: 50%;
   font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
 .purchase button {
@@ -105,7 +108,7 @@ ul.breadcrumb li + li:before {
   border-style: none;
   color: white;
   font-size: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .purchase button:hover {
