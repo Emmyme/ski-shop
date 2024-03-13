@@ -58,6 +58,7 @@ nav {
   font-size: 2.5rem;
   color: white;
   margin-right: 2rem;
+  padding: 0.2rem;
 }
 
 #cart-link {
