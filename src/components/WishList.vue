@@ -2,10 +2,12 @@
   <div class="wishlist">
     <h2>My Wishlist</h2>
     <div v-for="product in wishlist.items" :key="product.id" class="product-card">
+      <router-link :to="`/${product.id}`">
       <div class="image-container">
-        <img :src="product.image" alt="Product Image" class="product-image" />
-      </div>
-      <div class="product-details">
+          <img :src="product.image" alt="Product Image" class="product-image" />
+        </div>
+      </router-link>
+      <div class="product-details" >
         <h3 class="product-title">{{ product.title }}</h3>
         <p class="price">{{ product.price }} SEK</p>
       </div>
@@ -17,6 +19,7 @@
 </template>
 
 <script setup>
+import router from '@/router/index.js';
 import { useWishlistStore } from '../stores/wishList.js'
 
 const wishlist = useWishlistStore()
@@ -91,6 +94,7 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-right: 1rem;
 }
 
 @media (max-width: 1000px) {

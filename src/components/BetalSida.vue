@@ -3,7 +3,7 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><router-link to="/products">Produkt Lista</router-link></li>
-                <li><router-link to="/cart">Produkt Lista</router-link></li>
+                <li><router-link to="/cart">varukorg</router-link></li>
                 <li>Betalning</li>
             </ul>
 
@@ -108,7 +108,7 @@
             </div>
 
             <div class="price" >
-                <h1> Total belopp: {{ pris }} SEK </h1>
+                <h1> Total belopp: {{ price }} SEK </h1>
                 <div class="news-letter" >
                     <h4>inkl. moms och frakt</h4>
                     <div>
@@ -135,9 +135,12 @@ export default {
     data() {
         return {
             // {{ pris }} pris är importerat från varugorgs komponentent
-            pris: 9999,
             showModal: false,
         }
+    },
+    props: {
+        price: Number
+
     },
     methods: {
         validateForm() {
@@ -213,6 +216,7 @@ export default {
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
+    overflow-x: visible;
 }
 
 main {
