@@ -95,7 +95,6 @@ export default {
   display: grid;
   gap: 20px;
   justify-content: center;
-  margin: 2rem;
 }
 
 .product-card {
