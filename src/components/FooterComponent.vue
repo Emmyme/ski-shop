@@ -5,24 +5,29 @@
         <h2>Kontakta oss</h2>
         <p>Email: contact@skishop.com</p>
         <p>Phone: (123) 456-7890</p>
+        <div class="faq-link">
+          <router-link to="/faq"
+            ><button><p>FAQ</p></button></router-link
+          >
+        </div>
       </div>
 
       <div class="created-by">
         <h2>Skapad av</h2>
         <p>Max, Emelie, Timothy, Supattra Maj, Melker</p>
-        <a href="https://github.com/Emmyme/ski-shop" target="_blank"
-          rel="noopener noreferrer">https://github.com/Emmyme/ski-shop</a>
+        <a href="https://github.com/Emmyme/ski-shop" target="_blank" rel="noopener noreferrer"
+          >https://github.com/Emmyme/ski-shop</a
+        >
       </div>
     </div>
     <div class="payment-methods">
-      <img src="../images/payment/klarna.png" alt="Betalning via Klarna">
-      <img src="../images/payment/paypal.png" alt="Betalning via PayPal">
-      <img src="../images/payment/Visa-Card.png" alt="Betalning via Visa">
-      <img src="../images/payment/apple-pay.png" alt="Betalning via Apple Pay" id="apple">
+      <img src="../images/payment/klarna.png" alt="Betalning via Klarna" />
+      <img src="../images/payment/paypal.png" alt="Betalning via PayPal" />
+      <img src="../images/payment/Visa-Card.png" alt="Betalning via Visa" />
+      <img src="../images/payment/apple-pay.png" alt="Betalning via Apple Pay" id="apple" />
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .footer {
@@ -30,15 +35,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #056CB7;
+  background-color: #056cb7;
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
   padding: 40px 20px;
-  width: 100%; 
+  width: 100%;
   position: relative;
-  margin-top: auto; 
+  margin-top: auto;
 }
-
 
 .con {
   display: flex;
@@ -72,7 +76,7 @@
 }
 
 h2 {
-  color: #EFEFEF;
+  color: #efefef;
   margin-bottom: 15px;
   font-size: 1.5rem;
 }
@@ -93,8 +97,18 @@ a:hover {
   color: #cbcbcb;
 }
 
-@media (max-width: 768px) {
+.faq-link {
+  padding: 0.5rem;
+}
 
+.faq-link button {
+  background-color: #0662a4;
+  border-style: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
   .x {
     flex-direction: column;
     align-items: center;
@@ -114,4 +128,5 @@ a:hover {
     height: 25px;
     margin: 5px;
   }
-}</style>
+}
+</style>
