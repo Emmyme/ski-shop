@@ -76,4 +76,10 @@ export default {
 .faq-content {
   padding: 10px;
 }
+
+@media (max-width: 768px) {
+  .questions {
+    padding: 0;
+  }
+}
 </style>

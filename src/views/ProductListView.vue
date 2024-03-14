@@ -40,7 +40,7 @@ export default {
 }
 
 .category-button {
-  background-color: #7db9e4;
+  background-color: #056cb7;
   color: white;
   padding: 8px 16px;
   margin: 8px;
@@ -51,7 +51,7 @@ export default {
 }
 
 .category-button:hover {
-  background-color: #5b8dbb;
+  background-color: #7db9e4;
   transition: 0.15s;
 }
 

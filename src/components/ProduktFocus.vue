@@ -5,7 +5,7 @@
       <!-- Brödsmulor för navigering -->
       <ul class="breadcrumb">
         <li><router-link to="/">Hem</router-link></li>
-        <li><router-link to="/Produkt">Produktlista</router-link></li>
+        <li><router-link to="/products">Produktlista</router-link></li>
         <li>{{ product.title }}</li>
       </ul>
     </div>
@@ -117,5 +117,15 @@ ul.breadcrumb li + li:before {
 
 .purchase a {
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .Produktsida {
+    padding: 0;
+  }
+
+  .Produktsida {
+    padding: 0;
+  }
 }
 </style>
